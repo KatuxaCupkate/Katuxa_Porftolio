@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.add('js');</script>
+
+    <title>Ekaterina Rusetskaya — Creative 2D Technical Artist</title>
+    <meta name="description" content="Katia Rusetskaya — creative 2D Technical Artist. Custom HLSL/CG shaders, 2D lighting and VFX, Spine, and pipeline tooling. 100+ optimized mobile playables and personal Unity projects.">
+    <meta name="author" content="Ekaterina Rusetskaya">
+    <meta name="theme-color" content="#16101f">
+    <!-- TODO: set to your live URL -->
+    <link rel="canonical" href="https://example.com/">
+
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ekaterina Rusetskaya — Portfolio">
+    <meta property="og:title" content="Ekaterina Rusetskaya — Creative 2D Technical Artist">
+    <meta property="og:description" content="Custom shaders, 2D lighting & VFX, Spine and pipeline tooling. 100+ optimized playables and personal Unity projects.">
+    <!-- TODO: set to your live URL + a 1200x630 preview image -->
+    <meta property="og:url" content="https://example.com/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ekaterina Rusetskaya — Creative 2D Technical Artist">
+    <meta name="twitter:description" content="Custom shaders, 2D lighting & VFX, Spine and pipeline tooling. 100+ optimized playables and personal Unity projects.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/effects.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ekaterina Rusetskaya",
+        "alternateName": "Katia Rusetskaya",
+        "jobTitle": "Creative 2D Technical Artist",
+        "address": { "@type": "PostalAddress", "addressLocality": "Tbilisi", "addressCountry": "Georgia" },
+        "knowsAbout": ["Technical Art", "Shaders", "HLSL", "2D Lighting", "VFX", "Spine 2D", "Unity", "Cocos Creator", "Pipeline Tooling"]
+    }
+    </script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <!-- Living "lava lamp" background: slow drifting, blurred colour blobs behind everything -->
+    <div class="lava-bg" aria-hidden="true">
+        <span class="lava-blob lava-blob--1"></span>
+        <span class="lava-blob lava-blob--2"></span>
+        <span class="lava-blob lava-blob--3"></span>
+        <span class="lava-blob lava-blob--4"></span>
+        <span class="lava-blob lava-blob--5"></span>
+        <div class="lava-veil"></div>
+        <div class="lava-grain"></div>
+    </div>
+
+    <header class="header" id="header">
+        <nav class="nav container" aria-label="Primary">
+            <a href="#home" class="nav__logo">
+                <span class="nav__logo-dot" aria-hidden="true"></span>
+                <span class="nav__logo-text">katia<span class="nav__logo-accent">.rs</span></span>
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                    <li class="nav__item"><a href="#commercial" class="nav__link">Commercial</a></li>
+                    <li class="nav__item"><a href="#personal" class="nav__link">Personal</a></li>
+                    <li class="nav__item"><a href="#shaders" class="nav__link">Shaders</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <button class="nav__toggle" id="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main" id="main-content" tabindex="-1">
+        <!-- ============================ HOME / HERO ============================ -->
+        <section class="home section" id="home">
+            <div class="container">
+                <div class="hero">
+                    <span class="eyebrow hero__eyebrow">Creative / 2D Technical Artist · Tbilisi, Georgia</span>
+                    <h1 class="hero__title">
+                        I make 2D look <span class="grad-text">good</span><br>
+                        and run <span class="grad-text">fast</span>
+                    </h1>
+                    <p class="hero__lead">
+                        Hi, I'm Katia. This page is the quick version of my work, so you can decide if we're
+                        a good fit before we ever talk — part nerdy experiments with light and shaders,
+                        part two years of shipping real, optimized work.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#commercial" class="btn btn--primary">
+                            <span class="btn__label">See the work</span>
+                            <span class="btn__arrow" aria-hidden="true">↓</span>
+                        </a>
+                        <a href="#contact" class="btn btn--ghost">
+                            <span class="btn__label">Get in touch</span>
+                        </a>
+                    </div>
+                    <ul class="hero__chips" aria-label="Core skills">
+                        <li>HLSL / CG shaders</li>
+                        <li>2D lighting &amp; VFX</li>
+                        <li>Spine 2D</li>
+                        <li>Pipeline tooling</li>
+                        <li>Unity · Cocos</li>
+                    </ul>
+                </div>
+
+                <!-- About -->
+                <div class="about glass-card reveal" id="about">
+                    <div class="about__avatar">
+                        <!-- Set the photo path in js/config.js (photo:). Until then the monogram shows. -->
+                        <img class="about__photo" id="about-photo" alt="Ekaterina Rusetskaya" hidden>
+                        <span class="about__monogram" aria-hidden="true">K</span>
+                    </div>
+                    <div class="about__body">
+                        <h2 class="about__heading">Art meets engineering</h2>
+                        <p>
+                            I'm a 2D Technical Artist who lives right where art meets engineering — that's the
+                            part I love. I got here the self-taught way, starting from a Unity platformer I coded,
+                            designed and built just to learn, and still tinker with today. Then I spent two years
+                            in mobile marketing shipping 100+ playable ads, writing custom HLSL/CG shaders, rigging
+                            in Spine, and building the tooling that keeps a team moving. I chase real performance
+                            budgets without ever letting the visuals suffer.
+                        </p>
+                        <div class="stats">
+                            <div class="stat">
+                                <div class="stat__number">100+</div>
+                                <div class="stat__label">Playables built &amp; optimized</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat__number">&lt;4&nbsp;MB</div>
+                                <div class="stat__label">Hard build budget, visuals intact</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat__number">1&ndash;3&nbsp;h</div>
+                                <div class="stat__label">Saved daily by my ExtendScript export tool</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ COMMERCIAL ============================ -->
+        <section class="section section--commercial" id="commercial">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">01 · Commercial</span>
+                    <h2 class="section-head__title">Commercial Experience</h2>
+                    <div class="section-head__brand">
+                        <img src="assets/icons/AzurGames.png" alt="Azur Games" class="brand-logo" width="180" height="90" loading="lazy" decoding="async">
+                    </div>
+                    <p class="section-head__intro">
+                        Two years at Azur Games, building, optimizing and visually leveling up 100+ playable ads
+                        across genres — all squeezed under a hard 4&nbsp;MB budget without dulling the visuals.
+                        Custom HLSL/CG shaders, lightweight 2D VFX and Spine animation, plus the tooling and docs
+                        that kept the whole team faster. All of it shaped shoulder-to-shoulder with developers and artists.
+                    </p>
+                </header>
+
+                <div class="play-grid">
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Merge Farm playable — gameplay">
+                                <source data-src="assets/webm/azure_1-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">2D</span><span class="tag">VFX</span></div>
+                            <h3 class="play-card__title">Merge Farm</h3>
+                            <p class="play-card__desc">Cozy isometric merge with a snappy freeze-VFX hook. Stylized 2D, tuned to load instantly.</p>
+                            <a class="btn btn--play" data-link="azure_1" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Pixel Blast playable — gameplay">
+                                <source data-src="assets/webm/azure_2-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Puzzle</span><span class="tag">UI</span></div>
+                            <h3 class="play-card__title">Pixel Blast</h3>
+                            <p class="play-card__desc">Color-blast puzzle that paints a picture as you pop. Crisp UI, tiny footprint.</p>
+                            <a class="btn btn--play" data-link="azure_2" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Winter Drop playable — gameplay">
+                                <source data-src="assets/webm/azure_3-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Flat art</span><span class="tag">VFX</span></div>
+                            <h3 class="play-card__title">Winter Drop</h3>
+                            <p class="play-card__desc">Minimal flat-art hyper-casual with soft snow VFX and clean, readable motion.</p>
+                            <a class="btn btn--play" data-link="azure_3" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Color Fill playable — gameplay">
+                                <source data-src="assets/webm/azure_4-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Puzzle</span><span class="tag">2D</span></div>
+                            <h3 class="play-card__title">Color Fill</h3>
+                            <p class="play-card__desc">Swipe-to-fill pattern puzzle — a playful reveal that stays readable at a glance.</p>
+                            <a class="btn btn--play" data-link="azure_4" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Tomb of the Mask playable — gameplay">
+                                <source data-src="assets/webm/azure_5-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Arcade</span><span class="tag">Lighting</span></div>
+                            <h3 class="play-card__title">Tomb of the Mask</h3>
+                            <p class="play-card__desc">Neon arcade maze where glow trails and 2D lighting carry the entire mood.</p>
+                            <a class="btn btn--play" data-link="azure_5" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Find 15 Differences playable — gameplay">
+                                <source data-src="assets/webm/azure_6-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Casual</span><span class="tag">UI</span></div>
+                            <h3 class="play-card__title">Find 15 Differences</h3>
+                            <p class="play-card__desc">Spot-the-difference playable — bright 2D scenes and frictionless UI.</p>
+                            <a class="btn btn--play" data-link="azure_6" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Connect the Cities playable — gameplay">
+                                <source data-src="assets/webm/azure_7-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Puzzle</span><span class="tag">UI</span></div>
+                            <h3 class="play-card__title">Connect the Cities</h3>
+                            <p class="play-card__desc">Map-routing puzzle with clean line rendering and a calm, uncluttered UI.</p>
+                            <a class="btn btn--play" data-link="azure_7" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Ancient Bastions playable — gameplay">
+                                <source data-src="assets/webm/azure_8-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Action</span><span class="tag">VFX</span></div>
+                            <h3 class="play-card__title">Ancient Bastions</h3>
+                            <p class="play-card__desc">Castle-defense action with crackling lightning VFX and a punchy first-second hook.</p>
+                            <a class="btn btn--play" data-link="azure_8" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="City Runner playable — gameplay">
+                                <source data-src="assets/webm/azure_9-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Side-scroll</span><span class="tag">Parallax</span></div>
+                            <h3 class="play-card__title">City Runner</h3>
+                            <p class="play-card__desc">Side-scroller with parallax city backdrops building up to a boss-fight beat.</p>
+                            <a class="btn btn--play" data-link="azure_9" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="play-card glass-card reveal">
+                        <div class="play-card__media">
+                            <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Home Makeover playable — gameplay">
+                                <source data-src="assets/webm/azure_10-webm.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="play-card__body">
+                            <div class="tag-row"><span class="tag">Story</span><span class="tag">2D art</span></div>
+                            <h3 class="play-card__title">Home Makeover</h3>
+                            <p class="play-card__desc">Renovation story game — richly illustrated scenes and a satisfying match/choose loop.</p>
+                            <a class="btn btn--play" data-link="azure_10" href="#" rel="noopener noreferrer">
+                                <span class="btn__label">Preview</span><span class="btn__arrow" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Wide "optimization base" — the Tank Stars Notion knowledge base -->
+                <article class="base-card glass-card reveal">
+                    <div class="base-card__media">
+                        <video class="lazy-video" muted loop playsinline preload="none" data-lazy aria-label="Tank Stars Spine and VFX knowledge base in Notion">
+                            <source data-src="assets/webm/azure_TAST_BASE_portfolio.webm" type="video/webm">
+                        </video>
+                    </div>
+                    <div class="base-card__body">
+                        <div class="tag-row">
+                            <span class="tag tag--mono">Spine</span>
+                            <span class="tag tag--mono">Notion</span>
+                            <span class="tag tag--mono">Pipeline</span>
+                            <span class="tag tag--mono">Optimization</span>
+                        </div>
+                        <h3 class="base-card__title">Tank Stars — Spine &amp; VFX Knowledge Base</h3>
+                        <p class="base-card__desc">
+                            The kind of behind-the-scenes work I quietly love: a Notion knowledge base I architected
+                            for Tank Stars — a full Spine tank library, per-tank Spine-to-Unity files, and a VFX catalog.
+                            Standardized references like this cut artist and developer time by 10&ndash;20%.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================ PERSONAL ============================ -->
+        <section class="section section--personal" id="personal">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">02 · Personal</span>
+                    <h2 class="section-head__title">Personal Projects</h2>
+                    <p class="section-head__intro">
+                        The work I make when nobody's setting the brief — where I get to design, code and experiment
+                        freely, break things on purpose, and figure out the techniques I later bring to work.
+                    </p>
+                </header>
+
+                <!-- Sub: Platformer (pet project) -->
+                <article class="feature glass-card reveal" id="platformer">
+                    <div class="feature__media feature__media--code" aria-hidden="true">
+                        <div class="code-motif">
+                            <span class="code-motif__label">platformer.cs</span>
+                            <pre class="code-motif__lines"><span class="c-key">void</span> <span class="c-fn">Move</span>() {
+  <span class="c-cmt">// still evolving…</span>
+  velocity += <span class="c-fn">Gravity</span>(dt);
+  <span class="c-key">if</span> (grounded) <span class="c-fn">Jump</span>();
+  <span class="c-fn">Squash</span>(animCurve);
+}</pre>
+                        </div>
+                    </div>
+                    <div class="feature__body">
+                        <span class="kicker">Pet project · long-running</span>
+                        <h3 class="feature__title">The Platformer</h3>
+                        <p>
+                            My longest-running pet project and the reason I fell into all of this: a Unity platformer
+                            I code, design and build myself. It's my sandbox for mechanics experiments and cleaner code
+                            architecture — less a finished game than a sketchbook that happens to run, and it's still growing.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tag">Unity</span><span class="tag">Mechanics</span>
+                            <span class="tag">Code architecture</span><span class="tag">Research</span>
+                        </div>
+                        <a class="btn btn--ghost" data-link="platformer" href="#" rel="noopener noreferrer">
+                            <span class="btn__label">See it</span><span class="btn__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Sub: Indie project -->
+                <article class="feature feature--reverse glass-card reveal" id="indie">
+                    <div class="feature__media feature__media--duo">
+                        <div class="duo-video">
+                            <video class="lazy-video duo-video__el duo-video--cover" muted loop playsinline preload="none" data-lazy aria-label="Indie action game — 2D-lit top-down gameplay">
+                                <source data-src="assets/webm/portfolio_1_clean.webm" type="video/webm">
+                            </video>
+                        </div>
+                        <div class="duo-video">
+                            <video class="lazy-video duo-video__el duo-video--contain" muted loop playsinline preload="none" data-lazy aria-label="Indie action game — choose your build UI">
+                                <source data-src="assets/webm/portfolio_2_clean.webm" type="video/webm">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="feature__body">
+                        <span class="kicker">Indie · in development</span>
+                        <h3 class="feature__title">Top-Down Action Roguelite</h3>
+                        <p>
+                            A Unity top-down wave-survival action game I'm building end to end — glowing 2D-lit crystals,
+                            a punchy combat loop, and a rarity-framed "choose your build" class UI that I'm a little too
+                            proud of. Game design, visuals and experiments in one place.
+                        </p>
+                        <div class="tag-row">
+                            <span class="tag">Unity</span><span class="tag">2D Lighting</span>
+                            <span class="tag">UI / UX</span><span class="tag">VFX</span>
+                        </div>
+                        <a class="btn btn--ghost" data-link="indie" href="#" rel="noopener noreferrer">
+                            <span class="btn__label">More</span><span class="btn__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================ SHADERS & VFX ============================ -->
+        <section class="section section--shaders" id="shaders">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">03 · Shaders &amp; VFX</span>
+                    <h2 class="section-head__title">Shaders &amp; VFX</h2>
+                    <p class="section-head__intro">
+                        My playground for highly configurable HLSL/CG shaders, 2D lighting and custom VFX — where I poke
+                        at frost, neon glow, snow and lightning until they look exactly the way I imagined. Pure curiosity
+                        that often finds its way into real projects.
+                    </p>
+                    <p class="section-note">
+                        <span class="dot dot--live" aria-hidden="true"></span>
+                        The tiles below are <strong>live shaders</strong> rendering in your browser right now — drop in
+                        your own captures any time.
+                    </p>
+                </header>
+
+                <div class="shader-grid reveal">
+                    <figure class="shader-tile glass-card">
+                        <canvas class="shader-canvas" data-shader="flow" width="480" height="360" aria-label="Animated lava flow shader"></canvas>
+                        <figcaption class="shader-tile__cap">
+                            <strong>Domain-warped flow</strong>
+                            <span>Layered noise warped into a slow molten gradient.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="shader-tile glass-card">
+                        <canvas class="shader-canvas" data-shader="light" width="480" height="360" aria-label="Animated 2D point-light shader"></canvas>
+                        <figcaption class="shader-tile__cap">
+                            <strong>2D point light</strong>
+                            <span>Soft radial falloff and bloom — the look behind glowing scenes.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="shader-tile glass-card">
+                        <canvas class="shader-canvas" data-shader="voronoi" width="480" height="360" aria-label="Animated voronoi dissolve shader"></canvas>
+                        <figcaption class="shader-tile__cap">
+                            <strong>Voronoi dissolve</strong>
+                            <span>Cellular edges for shields, energy and dissolve VFX.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="shader-tile glass-card">
+                        <canvas class="shader-canvas" data-shader="ripple" width="480" height="360" aria-label="Animated ripple distortion shader"></canvas>
+                        <figcaption class="shader-tile__cap">
+                            <strong>Ripple &amp; refraction</strong>
+                            <span>Interference rings for water, heat haze and impact waves.</span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================ CONTACT ============================ -->
+        <section class="section section--contact" id="contact">
+            <div class="container">
+                <header class="section-head reveal">
+                    <span class="eyebrow">04 · Contact</span>
+                    <h2 class="section-head__title">Let's talk</h2>
+                    <p class="section-head__intro">
+                        If any of this clicks — hiring, collaborating, or you just want to talk shaders — I'd love to
+                        hear from you. Email is fastest, and I'm on LinkedIn, Telegram and GitHub too.
+                    </p>
+                    <span class="location-chip"><span class="dot" aria-hidden="true"></span>Tbilisi, Georgia</span>
+                </header>
+
+                <div class="contact-grid reveal">
+                    <div class="contact-card glass-card">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+                        </span>
+                        <h3 class="contact-card__title">Email</h3>
+                        <div class="contact-card__value" id="email-value">kru.ekaterina.w@gmail.com</div>
+                        <button class="btn btn--primary copy-btn" id="copy-email" type="button">
+                            <span class="btn-text">Copy email</span>
+                            <span class="btn-copied">✓ Copied!</span>
+                        </button>
+                    </div>
+
+                    <div class="contact-card glass-card">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7 10v7M7 7v.01M11.5 17v-4a2.5 2.5 0 0 1 5 0v4M11.5 17v-7"/></svg>
+                        </span>
+                        <h3 class="contact-card__title">LinkedIn</h3>
+                        <div class="contact-card__value">Connect professionally</div>
+                        <a class="btn btn--ghost" data-link="linkedin" href="#" rel="noopener noreferrer">
+                            <span class="btn__label">Visit profile</span><span class="btn__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-card glass-card">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4.5 3.5 11.2c-1 .4-1 1.8.1 2.1l4.3 1.3 1.7 5.1c.3.9 1.4 1 1.9.2l2.3-3.3 4.3 3.2c.7.5 1.7.1 1.9-.7L22 5.6c.2-.9-.6-1.5-1-1.1Z"/><path d="m8 14.6 9-7.6-6.6 8.3"/></svg>
+                        </span>
+                        <h3 class="contact-card__title">Telegram</h3>
+                        <div class="contact-card__value">Quick messages</div>
+                        <a class="btn btn--ghost" data-link="telegram" href="#" rel="noopener noreferrer">
+                            <span class="btn__label">Message me</span><span class="btn__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
+                    <div class="contact-card glass-card">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6 0C6.3 2.3 5.3 2.6 5.3 2.6a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 3.9 9c0 4.6 2.7 5.7 5.5 6-.4.4-.4.9-.5 1.6V21"/></svg>
+                        </span>
+                        <h3 class="contact-card__title">GitHub</h3>
+                        <div class="contact-card__value">Code &amp; experiments</div>
+                        <a class="btn btn--ghost" data-link="github" href="#" rel="noopener noreferrer">
+                            <span class="btn__label">View profile</span><span class="btn__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <span class="footer__logo">katia<span class="nav__logo-accent">.rs</span></span>
+            <p class="footer__text">Built from scratch — shaders, blobs and all. © 2026 Ekaterina Rusetskaya.</p>
+            <a href="#home" class="footer__top">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script defer src="js/scroll.js"></script>
+    <script defer src="js/parallax.js"></script>
+    <script defer src="js/shaders.js"></script>
+    <script defer src="js/main.js"></script>
+</body>
+</html>

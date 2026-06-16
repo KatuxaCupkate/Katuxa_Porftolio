@@ -1,0 +1,144 @@
+/* =========================================================================
+   Plum Reactor — living background, motion, scroll reveal
+   Motion is transform/opacity only (GPU-composited) and fully disabled
+   under prefers-reduced-motion (background freezes to a static gradient).
+   ========================================================================= */
+
+/* ---- lava-lamp background ---- */
+.lava-bg {
+    position: fixed;
+    inset: -48px;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+    will-change: transform;
+    background:
+        radial-gradient(140% 120% at 50% -10%, #1d1430 0%, var(--bg) 45%, var(--bg-deep) 100%);
+}
+
+.lava-blob {
+    position: absolute;
+    width: 46vmax;
+    height: 46vmax;
+    border-radius: var(--blob);
+    filter: blur(60px);
+    opacity: 0.5;
+    will-change: transform;
+    mix-blend-mode: screen;
+}
+.lava-blob--1 {
+    top: -8%; left: 4%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,61,139,0.55), rgba(255,61,139,0) 68%);
+    animation: drift1 34s ease-in-out infinite, blobMorph 22s ease-in-out infinite;
+}
+.lava-blob--2 {
+    top: -12%; right: -2%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,107,74,0.5), rgba(255,107,74,0) 68%);
+    animation: drift2 40s ease-in-out infinite, blobMorph 26s ease-in-out infinite reverse;
+    animation-delay: -8s, -4s;
+}
+.lava-blob--3 {
+    bottom: -16%; left: 28%;
+    width: 52vmax; height: 52vmax;
+    background: radial-gradient(circle at 50% 50%, rgba(255,178,74,0.42), rgba(255,178,74,0) 68%);
+    animation: drift3 46s ease-in-out infinite, blobMorph 30s ease-in-out infinite;
+    animation-delay: -16s, -10s;
+}
+.lava-blob--4 {
+    bottom: -10%; left: -6%;
+    background: radial-gradient(circle at 50% 50%, rgba(138,107,255,0.5), rgba(138,107,255,0) 68%);
+    animation: drift2 38s ease-in-out infinite, blobMorph 24s ease-in-out infinite;
+    animation-delay: -24s, -6s;
+}
+.lava-blob--5 {
+    top: 38%; right: 6%;
+    width: 38vmax; height: 38vmax;
+    background: radial-gradient(circle at 50% 50%, rgba(46,230,214,0.34), rgba(46,230,214,0) 68%);
+    animation: drift1 42s ease-in-out infinite reverse, blobMorph 28s ease-in-out infinite;
+    animation-delay: -12s, -14s;
+}
+
+/* vignette to protect text contrast at the edges + center calm */
+.lava-veil {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120% 120% at 50% 48%, rgba(22,16,31,0) 38%, rgba(14,10,22,0.82) 100%);
+}
+/* very subtle film grain to kill banding on the soft gradients */
+.lava-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---- keyframes ---- */
+@keyframes drift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(8vw, 6vh) scale(1.12); }
+}
+@keyframes drift2 {
+    0%, 100% { transform: translate(0, 0) scale(1.05); }
+    50%      { transform: translate(-7vw, 8vh) scale(0.92); }
+}
+@keyframes drift3 {
+    0%, 100% { transform: translate(0, 0) scale(0.95); }
+    50%      { transform: translate(6vw, -7vh) scale(1.15); }
+}
+@keyframes blobMorph {
+    0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+    25%      { border-radius: 63% 37% 54% 46% / 49% 60% 40% 51%; }
+    50%      { border-radius: 38% 62% 47% 53% / 64% 46% 54% 36%; }
+    75%      { border-radius: 57% 43% 36% 64% / 43% 57% 43% 57%; }
+}
+
+/* ---- glow pulse for the live dot ---- */
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.8; box-shadow: 0 0 10px var(--glow-cyan); }
+    50%      { opacity: 1;   box-shadow: 0 0 18px var(--glow-cyan); }
+}
+.dot { animation: glowPulse 7s ease-in-out infinite; }
+
+/* ---- scroll reveal (only hide when JS is present, so no-JS users see all) ---- */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.5s var(--ease-soft), transform 0.6s var(--ease-soft);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* gentle stagger for cards that share a row */
+.play-card.reveal:nth-child(4n+2) { transition-delay: 0.06s; }
+.play-card.reveal:nth-child(4n+3) { transition-delay: 0.12s; }
+.play-card.reveal:nth-child(4n+4) { transition-delay: 0.18s; }
+.contact-card { transition: transform var(--t-base), border-color var(--t-base), box-shadow var(--t-base); }
+
+/* ---- top scroll-progress bar ---- */
+.scroll-indicator {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--accent-grad);
+    box-shadow: 0 0 12px var(--glow);
+    z-index: 1500;
+    transition: transform 0.1s linear;
+}
+
+/* ---- reduced motion: freeze everything ---- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .lava-blob,
+    .about__avatar,
+    .nav__logo-dot,
+    .dot { animation: none !important; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .play-grid.is-visible .play-card,
+    .shader-grid.is-visible .shader-tile { animation: none !important; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
