@@ -130,9 +130,8 @@ function initLazyVideos() {
     const videos = document.querySelectorAll('video[data-lazy]');
     if (!videos.length) return;
 
-    // The gameplay clips are portfolio content, so they autoplay (muted, looping).
-    // Click-to-pause (initVideoControls) provides the required pause affordance,
-    // and a manual pause is remembered so scrolling won't restart it.
+    // The gameplay clips are portfolio content, so they always autoplay (muted,
+    // looping) and cannot be paused; they only pause off-screen to save power.
     if (!('IntersectionObserver' in window)) {
         videos.forEach(loadVideo);
         return;
@@ -142,9 +141,7 @@ function initLazyVideos() {
             const video = entry.target;
             if (entry.isIntersecting) {
                 loadVideo(video);
-                if (!video.hasAttribute('data-user-paused')) {
-                    video.play().catch((err) => console.debug('autoplay blocked', err));
-                }
+                video.play().catch((err) => console.debug('autoplay blocked', err));
             } else {
                 video.pause();
             }
@@ -152,24 +149,6 @@ function initLazyVideos() {
     }, { rootMargin: '250px 0px' });
 
     videos.forEach((v) => observer.observe(v));
-}
-
-// Let visitors click a clip to play/pause it, with a remembered manual-pause
-// state and a ► badge while paused (the badge class lives on the media wrapper).
-function initVideoControls() {
-    document.querySelectorAll('video[data-lazy]').forEach((v) => {
-        v.addEventListener('click', () => {
-            if (v.paused) {
-                v.removeAttribute('data-user-paused');
-                v.play().catch(() => {});
-            } else {
-                v.setAttribute('data-user-paused', '1');
-                v.pause();
-            }
-        });
-        v.addEventListener('play', () => v.parentElement && v.parentElement.classList.remove('vid-paused'));
-        v.addEventListener('pause', () => v.parentElement && v.parentElement.classList.add('vid-paused'));
-    });
 }
 
 // Show a real photo in the About blob when one is set in config.js (photo:).
@@ -231,7 +210,6 @@ function initApp() {
     initMobileMenu();
     initEmailCopy();
     initLazyVideos();
-    initVideoControls();
     initScrollReveal();
     initEasterEgg();
 }

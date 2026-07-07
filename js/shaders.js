@@ -1,11 +1,11 @@
 /* =========================================================================
    shaders.js — tiny live WebGL fragment shaders for the "Shaders & VFX"
    gallery. Each <canvas data-shader="…"> renders its own effect. Loops pause
-   when off-screen or the tab is hidden, freeze to one frame under
-   prefers-reduced-motion, and fall back to a static gradient with no WebGL.
+   when off-screen or the tab is hidden, and fall back to a static gradient with
+   no WebGL. The shaders are core to the page's identity, so they keep animating
+   regardless of prefers-reduced-motion.
    ========================================================================= */
 (function () {
-    const REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const canvases = document.querySelectorAll('canvas[data-shader]');
     if (!canvases.length) return;
 
@@ -197,7 +197,6 @@
             rafId = requestAnimationFrame(loop);
         }
         function play() {
-            if (REDUCE) { render(8.0); return; }   // single frozen frame
             if (rafId === null) { start = performance.now(); rafId = requestAnimationFrame(loop); }
         }
         function stop() {
@@ -218,8 +217,8 @@
             if (document.hidden) stop();
             else if (visible) play();
         });
-        // Repaint once on resize — including the frozen reduced-motion frame.
-        window.addEventListener('resize', () => { if (visible && (REDUCE || rafId === null)) render(8.0); }, { passive: true });
+        // Repaint once on resize if currently paused (offscreen/hidden).
+        window.addEventListener('resize', () => { if (visible && rafId === null) render(8.0); }, { passive: true });
     }
 
     canvases.forEach(setup);

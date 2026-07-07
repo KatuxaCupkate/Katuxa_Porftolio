@@ -18,7 +18,7 @@ button so the page never ships a dead link.
 ## Files
 - `css/main.css` — tokens, layout, nav, footer
 - `css/components.css` — hero, cards, buttons, features, shaders, contact
-- `css/effects.css` — living background, motion, scroll reveal (full `prefers-reduced-motion` fallback)
+- `css/effects.css` — living background, motion, scroll reveal (under `prefers-reduced-motion` the ambient background + shaders stay alive by design; only scroll-reveal is calmed)
 - `js/config.js` — **your links** · `js/main.js` · `js/scroll.js` · `js/parallax.js` · `js/shaders.js`
 
 No build step — open `index.html` or serve the folder statically.

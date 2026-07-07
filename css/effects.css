@@ -4,6 +4,9 @@
    under prefers-reduced-motion (background freezes to a static gradient).
    ========================================================================= */
 
+/* SVG goo filter holder — must not occupy layout */
+.goo-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 /* ---- lava-lamp background ---- */
 .lava-bg {
     position: fixed;
@@ -21,7 +24,7 @@
     width: 46vmax;
     height: 46vmax;
     border-radius: var(--blob);
-    filter: blur(60px);
+    filter: blur(46px);
     opacity: 0.5;
     will-change: transform;
     mix-blend-mode: screen;
@@ -57,6 +60,37 @@
     animation: drift1 42s ease-in-out infinite reverse, blobMorph 28s ease-in-out infinite;
     animation-delay: -12s, -14s;
 }
+
+/* ---- true lava-lamp layer: light blobs that travel vertically and, thanks to
+   the SVG #goo filter, MERGE when they meet and SPLIT as they part ---- */
+.lava-lamp {
+    position: absolute;
+    top: 0; left: 0;
+    width: 60vw;
+    height: 100%;
+    /* goo merges the blobs, then a soft blur turns the hard metaball edges into
+       a glow so they blend into the background instead of looking like stickers */
+    filter: url(#goo) blur(18px);
+    opacity: 0.5;
+    mix-blend-mode: screen;
+}
+.lamp-blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+}
+/* lilac + pink hues so merges show a colour blend */
+.lamp-blob--1 { left: 8%;  width: 17vmax; height: 17vmax; background: radial-gradient(circle at 50% 45%, rgba(198,168,255,0.95), rgba(198,168,255,0.7) 46%, rgba(198,168,255,0) 70%); animation: lamp1 19s ease-in-out infinite; }
+.lamp-blob--2 { left: 26%; width: 13vmax; height: 13vmax; background: radial-gradient(circle at 50% 45%, rgba(255,140,200,0.9),  rgba(255,140,200,0.65) 46%, rgba(255,140,200,0) 70%); animation: lamp2 25s ease-in-out infinite; animation-delay: -6s; }
+.lamp-blob--3 { left: 2%;  width: 14vmax; height: 14vmax; background: radial-gradient(circle at 50% 45%, rgba(170,150,255,0.92), rgba(170,150,255,0.68) 46%, rgba(170,150,255,0) 70%); animation: lamp3 22s ease-in-out infinite; animation-delay: -11s; }
+.lamp-blob--4 { left: 30%; width: 10vmax; height: 10vmax; background: radial-gradient(circle at 50% 45%, rgba(220,180,255,0.9),  rgba(220,180,255,0.66) 46%, rgba(220,180,255,0) 70%); animation: lamp4 29s ease-in-out infinite; animation-delay: -3s; }
+
+/* desynced vertical drifts (top<->bottom) with gentle horizontal sway so the
+   blobs cross paths, merge, then separate like a real lava lamp */
+@keyframes lamp1 { 0%,100% { transform: translate(-1vw, -14vh) scale(1); }    50% { transform: translate(3vw, 60vh) scale(1.18); } }
+@keyframes lamp2 { 0%,100% { transform: translate(2vw, 70vh) scale(1.1); }     50% { transform: translate(-3vw, 4vh) scale(0.9); } }
+@keyframes lamp3 { 0%,100% { transform: translate(0, 30vh) scale(0.95); }      50% { transform: translate(4vw, 86vh) scale(1.12); } }
+@keyframes lamp4 { 0%,100% { transform: translate(1vw, 88vh) scale(1.05); }    50% { transform: translate(-2vw, 22vh) scale(0.92); } }
 
 /* vignette to protect text contrast at the edges + center calm */
 .lava-veil {
@@ -126,19 +160,19 @@
     transition: transform 0.1s linear;
 }
 
-/* ---- reduced motion: freeze everything ---- */
+/* The SVG goo filter is expensive on phones — drop it there (blobs still
+   drift, just without the gooey merge) and widen the layer to fill. */
+@media (max-width: 700px) {
+    /* skip the costly goo on phones — keep a soft blur so blobs still glow */
+    .lava-lamp { filter: blur(26px); width: 100vw; opacity: 0.42; }
+}
+
+/* ---- reduced motion ----
+   The slow ambient background (lava blobs + lava-lamp) and the shaders are the
+   identity of the page, so they stay alive even here. Only the scroll-reveal
+   entrance is calmed — content simply appears instead of sliding in.
+   (Ask to restore a full freeze if you prefer strict reduced-motion.) */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .lava-blob,
-    .about__avatar,
-    .nav__logo-dot,
-    .dot { animation: none !important; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .play-grid.is-visible .play-card,
-    .shader-grid.is-visible .shader-tile { animation: none !important; }
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
 }
