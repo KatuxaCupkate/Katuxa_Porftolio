@@ -1,13 +1,13 @@
 # Ekaterina (Katia) Rusetskaya — Creative 2D Technical Artist
 
 A single-page portfolio with a soft, organic **"lava lamp"** aesthetic: drifting
-gradient blobs, glass cards, glow, and a gallery of **live WebGL shaders**.
+gradient blobs, glass cards, glow, and a gallery of **Unity Shader Graph captures**.
 
 ## Structure
 - **Home** — hero + about (art ✕ engineering, key stats)
 - **Commercial** — 10 Azur Games playable ads + a wide "optimization base" (the Tank Stars Spine/VFX Notion knowledge base)
 - **Personal** — the long-running platformer + an indie top-down action roguelite
-- **Shaders & VFX** — four shaders rendering live in the browser
+- **Shaders & VFX** — Unity Shader Graph captures (lava-lamp blobs, sprite tilt & plant sway)
 - **Contact** — email (copy), LinkedIn, Telegram, GitHub
 
 ## Editing links
@@ -19,6 +19,6 @@ button so the page never ships a dead link.
 - `css/main.css` — tokens, layout, nav, footer
 - `css/components.css` — hero, cards, buttons, features, shaders, contact
 - `css/effects.css` — living background, motion, scroll reveal (under `prefers-reduced-motion` the ambient background + shaders stay alive by design; only scroll-reveal is calmed)
-- `js/config.js` — **your links** · `js/main.js` · `js/scroll.js` · `js/parallax.js` · `js/shaders.js`
+- `js/config.js` — **your links** · `js/main.js` · `js/scroll.js` · `js/parallax.js`
 
 No build step — open `index.html` or serve the folder statically.

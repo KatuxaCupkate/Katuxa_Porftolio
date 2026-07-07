@@ -204,6 +204,59 @@ function initEasterEgg() {
     console.log('%cthe shaders on the page are real, by the way :)', 'color:#2ee6d6');
 }
 
+// Click a [data-zoom] video to open it enlarged in a lightbox (a bit larger
+// than the inline preview). Close on backdrop click, the ✕ button, or Escape.
+function initVideoZoom() {
+    const zoomables = document.querySelectorAll('video[data-zoom]');
+    if (!zoomables.length) return;
+
+    const box = document.createElement('div');
+    box.className = 'video-lightbox';
+    box.hidden = true;
+    box.innerHTML =
+        '<div class="video-lightbox__inner">' +
+        '<button class="video-lightbox__close" type="button" aria-label="Close">✕</button>' +
+        '<video class="video-lightbox__el" muted loop playsinline controls></video>' +
+        '<p class="video-lightbox__cap"></p>' +
+        '</div>';
+    document.body.appendChild(box);
+
+    const bigVideo = box.querySelector('.video-lightbox__el');
+    const cap = box.querySelector('.video-lightbox__cap');
+
+    function open(src, label) {
+        if (!src) return;
+        bigVideo.src = src;
+        cap.textContent = label || '';
+        cap.hidden = !label;
+        box.hidden = false;
+        document.body.classList.add('no-scroll');
+        bigVideo.play().catch(() => {});
+    }
+    function close() {
+        box.hidden = true;
+        bigVideo.pause();
+        bigVideo.removeAttribute('src');
+        bigVideo.load();
+        document.body.classList.remove('no-scroll');
+    }
+
+    zoomables.forEach((v) => {
+        v.addEventListener('click', () => {
+            const source = v.querySelector('source[data-src]');
+            const src = (source && (source.getAttribute('src') || source.dataset.src)) || v.currentSrc;
+            open(src, v.dataset.zoomLabel);
+        });
+    });
+
+    box.addEventListener('click', (e) => {
+        if (e.target === box || e.target.closest('.video-lightbox__close')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !box.hidden) close();
+    });
+}
+
 function initApp() {
     initLinks();
     initAvatar();
@@ -211,6 +264,7 @@ function initApp() {
     initEmailCopy();
     initLazyVideos();
     initScrollReveal();
+    initVideoZoom();
     initEasterEgg();
 }
 
