@@ -146,7 +146,7 @@ function initLazyVideos() {
                 video.pause();
             }
         });
-    }, { rootMargin: '250px 0px' });
+    }, { rootMargin: '120px 0px' });
 
     videos.forEach((v) => observer.observe(v));
 }

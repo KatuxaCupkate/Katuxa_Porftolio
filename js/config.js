@@ -12,7 +12,7 @@ window.PORTFOLIO_LINKS = {
   email:    "kru.ekaterina.w@gmail.com",   // shown + copied by the email button
   linkedin: "https://www.linkedin.com/in/ekaterina-rusetskaya-3984bb290/",                            // e.g. "https://www.linkedin.com/in/…"
   telegram: "@KatuXaKru",                            // e.g. "https://t.me/yourhandle"
-  github:   "",                            // optional — e.g. "https://github.com/…"
+  github:   "https://github.com/KatuxaCupkate",   // optional — e.g. "https://github.com/…"
 
   /* ---- About photo (optional) ---- */
   // Drop an image into assets/images/ and put its path here. Square photos

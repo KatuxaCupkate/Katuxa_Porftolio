@@ -141,6 +141,14 @@ strong { color: var(--text-primary); font-weight: 600; }
 
 .section { padding: var(--section-y) 0; position: relative; }
 
+/* perf: skip rendering offscreen sections (heavy glass cards + effects) until
+   scrolled near. contain-intrinsic-size gives a height estimate so the scrollbar
+   stays sane; the `auto` keyword caches the real size after first render. */
+.section--commercial { content-visibility: auto; contain-intrinsic-size: auto 2400px; }
+.section--personal   { content-visibility: auto; contain-intrinsic-size: auto 1600px; }
+.section--shaders    { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+.section--contact    { content-visibility: auto; contain-intrinsic-size: auto 700px; }
+
 .eyebrow {
     display: inline-block;
     font-family: var(--font-mono);

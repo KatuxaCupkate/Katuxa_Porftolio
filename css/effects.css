@@ -32,33 +32,33 @@
 .lava-blob--1 {
     top: -8%; left: 4%;
     background: radial-gradient(circle at 50% 50%, rgba(255,61,139,0.55), rgba(255,61,139,0) 68%);
-    animation: drift1 34s ease-in-out infinite, blobMorph 22s ease-in-out infinite;
+    animation: drift1 34s ease-in-out infinite;
 }
 .lava-blob--2 {
     top: -12%; right: -2%;
     background: radial-gradient(circle at 50% 50%, rgba(255,107,74,0.5), rgba(255,107,74,0) 68%);
-    animation: drift2 40s ease-in-out infinite, blobMorph 26s ease-in-out infinite reverse;
-    animation-delay: -8s, -4s;
+    animation: drift2 40s ease-in-out infinite;
+    animation-delay: -8s;
 }
 .lava-blob--3 {
     bottom: -16%; left: 28%;
     width: 52vmax; height: 52vmax;
     background: radial-gradient(circle at 50% 50%, rgba(255,178,74,0.42), rgba(255,178,74,0) 68%);
-    animation: drift3 46s ease-in-out infinite, blobMorph 30s ease-in-out infinite;
-    animation-delay: -16s, -10s;
+    animation: drift3 46s ease-in-out infinite;
+    animation-delay: -16s;
 }
 .lava-blob--4 {
     bottom: -10%; left: -6%;
     background: radial-gradient(circle at 50% 50%, rgba(138,107,255,0.5), rgba(138,107,255,0) 68%);
-    animation: drift2 38s ease-in-out infinite, blobMorph 24s ease-in-out infinite;
-    animation-delay: -24s, -6s;
+    animation: drift2 38s ease-in-out infinite;
+    animation-delay: -24s;
 }
 .lava-blob--5 {
     top: 38%; right: 6%;
     width: 38vmax; height: 38vmax;
     background: radial-gradient(circle at 50% 50%, rgba(46,230,214,0.34), rgba(46,230,214,0) 68%);
-    animation: drift1 42s ease-in-out infinite reverse, blobMorph 28s ease-in-out infinite;
-    animation-delay: -12s, -14s;
+    animation: drift1 42s ease-in-out infinite reverse;
+    animation-delay: -12s;
 }
 
 /* ---- true lava-lamp layer: light blobs that travel vertically and, thanks to

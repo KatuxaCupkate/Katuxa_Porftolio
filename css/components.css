@@ -73,6 +73,14 @@
     box-shadow: 0 10px 26px -12px var(--glow);
 }
 
+/* gradient contact link buttons — each a distinct hue, filled like Copy email */
+.btn--grad { color: #fff; border-color: transparent; }
+.btn--grad:hover { color: #fff; transform: translateY(-2px); }
+.btn--grad-linkedin { background: linear-gradient(135deg, #2f6bff, #17c0d4); box-shadow: 0 10px 30px -12px rgba(47, 107, 255, 0.55); }
+.btn--grad-telegram { background: linear-gradient(135deg, #8a6bff, #e05bd8); box-shadow: 0 10px 30px -12px rgba(138, 107, 255, 0.55); }
+.btn--grad-github { background: linear-gradient(135deg, #b6ff3c, #22d39a); color: #14101d; box-shadow: 0 10px 30px -12px rgba(90, 200, 110, 0.5); }
+.btn--grad-github:hover { color: #14101d; }
+
 /* pending link state (no URL yet in config.js) */
 .btn.is-pending {
     opacity: 0.55;
@@ -364,6 +372,27 @@
     background: var(--scrim);
     color: var(--text-primary);
 }
+/* click-to-play affordance on before/after frames (they don't autoplay) */
+.ba-frame__play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 3.2rem; height: 3.2rem;
+    display: grid;
+    place-items: center;
+    padding-left: 0.18rem;
+    border-radius: 50%;
+    background: var(--scrim);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 0.95rem;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: transform var(--t-base);
+}
+.ba-frame:hover .ba-frame__play { transform: translate(-50%, -50%) scale(1.1); }
 
 /* video lightbox — click a before/after clip to enlarge it */
 video[data-zoom] { cursor: zoom-in; }
@@ -424,12 +453,13 @@ video[data-zoom] { cursor: zoom-in; }
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: clamp(1rem, 2.4vw, 1.6rem);
+    align-items: start;
 }
 .shader-tile { overflow: hidden; padding: 0; }
 .shader-tile:hover { border-color: var(--border-strong); transform: translateY(-4px); }
 .shader-canvas {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     display: block;
     background: var(--bg-deep);
     border-bottom: 1px solid var(--border);
